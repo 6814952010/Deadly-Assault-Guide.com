@@ -1,7 +1,10 @@
 {
   "name": "deadly-assault-guide-root",
   "private": true,
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
-    "build": "cd client && npm ci && npm run build"
+    "build": "npm run build --prefix client"
   }
 }

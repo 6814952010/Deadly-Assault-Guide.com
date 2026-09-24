@@ -11,11 +11,8 @@ const initializeServer = async () => {
   await ensureBossCatalog();
 };
 
-if (process.env.VERCEL) {
-  initializeServer().catch((error) => {
-    console.error('Vercel startup failed:', error.message);
-  });
-} else if (require.main === module) {
+// Local development only. On Vercel the API runs through api/index.js.
+if (require.main === module) {
   initializeServer()
     .then(() => app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`)))
     .catch((error) => {

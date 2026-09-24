@@ -6,6 +6,7 @@ const bossSchema = new mongoose.Schema({
   name: { type: String, required: true, trim: true },
   subtitle: { type: String, trim: true, default: '' },
   imageKey: { type: String, trim: true },
+  imageUrl: { type: String, trim: true, default: '' },
   intro: { type: String, required: true, trim: true, maxlength: 2000 },
   threatProfile: { type: String, trim: true, maxlength: 4000 },
   fightPlan: { type: String, trim: true, maxlength: 4000 },

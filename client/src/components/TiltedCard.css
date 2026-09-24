@@ -1,0 +1,5 @@
+.tilted-card-figure { position: relative; display: flex; align-items: center; justify-content: center; margin: 0; perspective: 900px; }
+.tilted-card-inner { position: relative; overflow: hidden; background: #050505; transform-style: preserve-3d; will-change: transform; }
+.tilted-card-background { position: absolute; z-index: 0; inset: 0; overflow: hidden; }
+.tilted-card-img { position: relative; z-index: 1; display: block; width: 100%; height: 100%; object-fit: contain; object-position: center 58%; filter: drop-shadow(0 2.2rem 1.5rem rgba(0,0,0,.78)); transform: translateZ(0); }
+@media (max-width: 640px) { .tilted-card-figure { pointer-events: none; } }

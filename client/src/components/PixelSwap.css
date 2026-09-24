@@ -1,0 +1,10 @@
+.pixel-swap { min-height: 100vh; position: relative; isolation: isolate; }
+.pixel-swap__page { min-height: 100vh; }
+.pixel-swap__incoming { position: fixed; inset: 0; z-index: 20; overflow: auto; }
+.pixel-swap__grid { position: fixed; inset: 0; z-index: 21; overflow: hidden; cursor: progress; }
+.pixel-swap__grid--hold { background: #050505; }
+.pixel-swap__pixel { position: absolute; display: block; background: #050505; transform: scale(.18) rotate(12deg); opacity: 0; animation-name: pixel-swap-cover; animation-timing-function: cubic-bezier(.22, 1, .36, 1); animation-fill-mode: both; }
+@keyframes pixel-swap-cover { to { transform: scale(1.25) rotate(0); opacity: 1; } }
+/* PixelSwap controls the stagger direction; this animation shrinks each covered tile. */
+@keyframes pixel-swap-reveal { from { transform: scale(1.25) rotate(0); opacity: 1; } to { transform: scale(.08) rotate(-16deg); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .pixel-swap__pixel { animation: none; } }

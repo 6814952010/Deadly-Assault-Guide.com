@@ -1,0 +1,8 @@
+{
+  "name": "deadly-assault-guide-root",
+  "private": true,
+  "scripts": {
+    "build": "cd client && npm install && npm run build",
+    "dev": "cd client && npm install && npm run dev"
+  }
+}

@@ -55,8 +55,8 @@ body { margin: 0; }
 .boss-alert { position: absolute; top: 0; bottom: 0; z-index: 0; width: max(4rem, calc((100% - 1080px) / 2)); overflow: hidden; border-color: rgba(224,255,56,.16); pointer-events: none; }
 .boss-alert-left { left: 0; border-right: 1px solid rgba(224,255,56,.16); }
 .boss-alert-right { right: 0; border-left: 1px solid rgba(224,255,56,.16); }
-.boss-alert-track { position: absolute; left: 0; display: flex; width: max-content; color: rgba(87, 85, 85, 0.3); font: 500 clamp(4rem, 7vw, 8rem)/.7 'Oswald', sans-serif; letter-spacing: .08em; animation: boss-alert-slide 50s linear infinite; }
-.boss-alert-run { display: flex; flex: none; gap: calc(2rem + 15px); padding-right: calc(2rem + 150px); }
+.boss-alert-track { position: absolute; left: 0; display: flex; width: max-content; color: rgba(87, 85, 85, 0.3); font: 700 clamp(4rem, 7vw, 8rem)/.7 'Oswald', sans-serif; letter-spacing: .08em; animation: boss-alert-slide 50s linear infinite; }
+.boss-alert-run { display: flex; flex: none; gap: calc(2rem + 15px); padding-right: calc(2rem + 15px); }
 .boss-alert-left .boss-alert-track { animation-name: boss-alert-slide-reverse; }
 .boss-alert-left .boss-alert-track { animation-name: boss-alert-slide-left; }
 .boss-alert span { white-space: nowrap; }

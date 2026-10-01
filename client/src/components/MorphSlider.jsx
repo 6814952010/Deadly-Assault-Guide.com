@@ -377,10 +377,6 @@ class MorphEngine {
     this.announce(target);
   }
 
-<<<<<<< HEAD
-  next() {
-    this.goTo(1);
-=======
   randomIndex(exclude = null) {
     if (this.items.length < 2) return this.current;
     const available = this.items
@@ -414,7 +410,6 @@ class MorphEngine {
         onComplete: () => this.commit(target)
       }
     );
->>>>>>> 3eb4151 (Change morph slider)
   }
 
   prev() {

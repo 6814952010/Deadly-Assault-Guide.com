@@ -377,8 +377,44 @@ class MorphEngine {
     this.announce(target);
   }
 
+<<<<<<< HEAD
   next() {
     this.goTo(1);
+=======
+  randomIndex(exclude = null) {
+    if (this.items.length < 2) return this.current;
+    const available = this.items
+      .map((_, index) => index)
+      .filter(index => index !== exclude && index !== this.current);
+
+    if (!available.length) return this.wrap(this.current + 1);
+    return available[Math.floor(Math.random() * available.length)];
+  }
+
+  next() {
+    const target = this.randomIndex(this.current);
+    const dir = target > this.current ? 1 : -1;
+    if (this.animating || this.dragging || this.items.length < 2) return;
+    this.syncOptions();
+    this.program.uniforms.tCurrent.value = this.textures[this.current];
+    this.program.uniforms.uCurrentSize.value = this.sizes[this.current];
+    this.program.uniforms.tNext.value = this.textures[target];
+    this.program.uniforms.uNextSize.value = this.sizes[target];
+    this.program.uniforms.uDir.value = dir;
+    this.animating = true;
+    this.announce(target);
+    const duration = this.reducedMotion ? Math.min(this.getOptions().duration, 0.4) : this.getOptions().duration;
+    this.tween = gsap.fromTo(
+      this.program.uniforms.uProgress,
+      { value: 0 },
+      {
+        value: 1,
+        duration,
+        ease: this.getOptions().ease,
+        onComplete: () => this.commit(target)
+      }
+    );
+>>>>>>> 3eb4151 (Change morph slider)
   }
 
   prev() {

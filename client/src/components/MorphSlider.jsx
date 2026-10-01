@@ -379,12 +379,15 @@ class MorphEngine {
 
   randomIndex(exclude = null) {
     if (this.items.length < 2) return this.current;
-    const available = this.items
+    const pool = this.items
       .map((_, index) => index)
       .filter(index => index !== exclude && index !== this.current);
 
-    if (!available.length) return this.wrap(this.current + 1);
-    return available[Math.floor(Math.random() * available.length)];
+    if (pool.length === 0) {
+      return this.wrap(this.current + 1);
+    }
+
+    return pool[Math.floor(Math.random() * pool.length)];
   }
 
   next() {
@@ -506,7 +509,7 @@ function getRandomIndex(items, fallback = 0) {
 
 export default function MorphSlider({
   items = DEFAULT_ITEMS,
-  startIndex = getRandomIndex(DEFAULT_ITEMS),
+  startIndex,
   transition = 'melt',
   duration = 1.2,
   ease = 'power2.inOut',
@@ -529,6 +532,9 @@ export default function MorphSlider({
   const containerRef = useRef(null);
   const engineRef = useRef(null);
   const resolvedStartIndex = useRef(typeof startIndex === 'number' ? startIndex : getRandomIndex(items));
+  if (typeof startIndex !== 'number' && items.length > 0 && resolvedStartIndex.current >= items.length) {
+    resolvedStartIndex.current = getRandomIndex(items);
+  }
   const [index, setIndex] = useState(resolvedStartIndex.current);
   const [hovering, setHovering] = useState(false);
 
